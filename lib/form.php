@@ -55,6 +55,20 @@ function addUser()
     return 'add_success';
 }
 
+function deleteUser()
+{
+    $id = $_GET['remove_id'];
+    // Обработаем ошибку БД, если она случится
+    try{
+        removeUser($id);
+        logData("Удален клиент c id {$id}");
+    } catch (Throwable $e) {
+        var_dump($e);
+    }
+
+    return 'delete_success';
+}
+
 function importUsers()
 {
     $file = $_FILES['import_data'];

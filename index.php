@@ -65,9 +65,13 @@ foreach ($users as $user) { ?>
             <td><?= $user['phone']?></td>
             <td><?= $user['email']?></td>
             <td><?= $user['created_at']?></td>
+            <td>
+                <a href="/delete.php?remove_id=<?= $user['id']?>&status=remove" >Удалить</a></td>
         </tr>
 <?php } ?>
     </tbody>
 </table>
 
+<?php
+echo $_POST['remove_id'];
 
