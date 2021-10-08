@@ -52,7 +52,17 @@ SQL;
     $stmt->bindParam('email', $email);
     $stmt->execute();
 }
-
+function removeUser($userid): void
+{
+    $pdo = getDbConnection();
+    $id = $userid;
+    $sql = <<<SQL
+DELETE FROM users WHERE id=:id
+SQL;
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam('id', $id);
+    $stmt->execute();
+}
 
 function getAllUsers(): array
 {
